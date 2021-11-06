@@ -6,9 +6,9 @@ import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 
 public class CardDeliveryOrder {
@@ -29,10 +29,12 @@ public class CardDeliveryOrder {
         $("[data-test-id='name'] input").setValue(registrationInfo.getName());
         $("[data-test-id='phone'] input").setValue("+79111111111");
         $("[data-test-id='agreement'] .checkbox__box").click();
-        $(byText("Забронировать")).click();
-        $("[data-test-id='notification'] .notification__content")
-                .shouldBe(visible, Duration.ofSeconds(15))
-                .shouldHave(exactText("Встреча успешно забронирована на " + date));
+        $$("button").find(exactText("Забронировать")).click();
+        $(withText("Успешно! Встреча успешно забронирована на " + date));
+                //.shouldBe(visible);
+        //$(byText("Забронировать")).click();
+        //    .shouldBe(visible, Duration.ofSeconds(7));
+
     }
 
     @Test
@@ -45,9 +47,9 @@ public class CardDeliveryOrder {
         $("[data-test-id='name'] input").setValue(registrationInfo.getName());
         $("[data-test-id='phone'] input").setValue("+79111111111");
         $("[data-test-id='agreement'] .checkbox__box").click();
-        $(byText("Забронировать")).click();
-        $("[data-test-id='notification'] .notification__content")
-                .shouldBe(visible, Duration.ofSeconds(15))
-                .shouldHave(exactText("Встреча успешно забронирована на " + date));
+        $$("button").find(exactText("Забронировать")).click();
+        $(withText("Успешно! Встреча успешно забронирована на " + date));
+               // .shouldBe(visible);
     }
 }
+//$("[data-test-id='notification'] .
