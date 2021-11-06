@@ -31,6 +31,6 @@ public class CardDeliveryOrder {
         $(withText("Забронировать")).click();
         $("[data-test-id='notification'] .notification__content")
                 .shouldBe(visible, Duration.ofSeconds(12))
-                .shouldHave(exactText("Успешно! Встреча успешно забронирована на " + date));
+                .shouldHave(exactText("Встреча успешно забронирована на " + date));
     }
 }
